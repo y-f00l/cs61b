@@ -64,7 +64,7 @@ public class NBody {
             drawBodies(bodyArray);
             StdDraw.show();
             StdDraw.pause(10);
-            dt += 0.001; 
+            dt += 100; 
         }
         StdOut.printf("%d\n", bodyArray.length);
         StdOut.printf("%.2e\n", radius);
