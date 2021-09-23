@@ -22,14 +22,14 @@ public class NBody {
         return bodyArray;
     }
 
-    public static void drawBackgroud(String imgToDraw) {
+    private static void drawBackgroud(String imgToDraw) {
         StdDraw.enableDoubleBuffering();
         StdDraw.setScale(-256, 256);
         StdDraw.clear();
         StdDraw.picture(0, 0, imgToDraw);
     }
 
-    public static void drawBodies(Planet[] bodyArray) {
+    private static void drawBodies(Planet[] bodyArray) {
         for(int i = 0; i < bodyArray.length; i++) {
             bodyArray[i].draw();
         }
@@ -64,7 +64,7 @@ public class NBody {
             drawBodies(bodyArray);
             StdDraw.show();
             StdDraw.pause(10);
-            dt += 10;
+            dt += 0.01; 
         }
         StdOut.printf("%d\n", bodyArray.length);
         StdOut.printf("%.2e\n", radius);
