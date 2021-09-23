@@ -1,4 +1,4 @@
-public class Body {
+public class Planet {
     double xxPos;
     double yyPos;
     double xxVel;
@@ -7,7 +7,7 @@ public class Body {
     String imgFileName;
     static final double G = 6.67e-11;
 
-    public Body(double xP, double yP, double xV, 
+    public Planet(double xP, double yP, double xV, 
             double yV, double m, String img){
         this.xxPos = xP;
         this.yyPos = yP;
@@ -17,7 +17,7 @@ public class Body {
         this.imgFileName = img;
     }
 
-    public Body(Body b) {
+    public Planet(Planet b) {
         this.xxPos = b.xxPos;
         this.yyPos = b.yyPos;
         this.xxVel = b.xxVel;
@@ -26,27 +26,27 @@ public class Body {
         this.imgFileName = b.imgFileName;
     }
 
-    public double calcDistance(Body b){
+    public double calcDistance(Planet b){
         return Math.sqrt((b.xxPos - this.xxPos) * (b.xxPos - this.xxPos) + 
                 (b.yyPos - this.yyPos) * (b.yyPos - this.yyPos)); 
     }
 
-    public double calcForceExertedBy(Body b){
+    public double calcForceExertedBy(Planet b){
         return this.G * b.mass * this.mass 
             / Math.pow(calcDistance(b), 2); 
     }
 
-    public double calcForceExertedByX(Body b){
+    public double calcForceExertedByX(Planet b){
         return calcForceExertedBy(b) 
             * (b.xxPos - this.xxPos) / calcDistance(b);
     }
 
-    public double calcForceExertedByY(Body b){
+    public double calcForceExertedByY(Planet b){
         return calcForceExertedBy(b)
             * (b.yyPos - this.yyPos) / calcDistance(b);
     }
 
-    public double calcNetForceExertedByX(Body[] bodyList) {
+    public double calcNetForceExertedByX(Planet[] bodyList) {
         int index = -1;
         for(int i = 0; i < bodyList.length; i++){
             if(this.equals(bodyList[i])) {
@@ -64,7 +64,7 @@ public class Body {
         return XForce;
     }
 
-    public double calcNetForceExertedByY(Body[] bodyList) {
+    public double calcNetForceExertedByY(Planet[] bodyList) {
         int index = -1;
         for(int i = 0; i < bodyList.length; i++){
             if(this.equals(bodyList[i])) {
