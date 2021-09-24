@@ -36,6 +36,14 @@ public class ArrayDeque<T> {
         }
 
         T result = itemArray[0];
+
+        if (size - 1 < itemArray.length / 4) {
+            T[] newArray = (T []) new Object[itemArray.length / 2];
+            System.arraycopy(itemArray, 1, newArray, 0, size);
+            itemArray = newArray;
+            size -= 1;
+            return result;
+        }
         System.arraycopy(itemArray, 1, itemArray, 0, size - 1);
         size -= 1;
         return result;
@@ -47,6 +55,13 @@ public class ArrayDeque<T> {
         }
 
         T result = itemArray[size - 1];
+        if(size - 1 < itemArray.length / 4) {
+            T[] newArray = (T []) new Object[itemArray.length / 2];
+            System.arraycopy(itemArray, 0, newArray, 0, size - 1);
+            itemArray = newArray;
+            size -= 1;
+            return result;
+        }
         size -= 1;
         return result;
     }

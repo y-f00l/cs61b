@@ -36,6 +36,7 @@ public class LinkedListDeque<T> {
         last = first;
     }
 
+    /*
     public LinkedListDeque(LinkedListDeque other) {
         if (other == null) {
             return;
@@ -50,6 +51,7 @@ public class LinkedListDeque<T> {
             size += 1;
         }
     }
+     */
 
     public void addFirst(T item) {
         DataNode ptr = new DataNode(item, first.next, first);
