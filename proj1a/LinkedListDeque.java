@@ -93,6 +93,9 @@ public class LinkedListDeque<T> {
         first.next = first.next.next;
         first.next.prev = first;
         size -= 1;
+        if(this.isEmpty()){
+            last = first;
+        }
         return val;
     }
 
@@ -108,9 +111,9 @@ public class LinkedListDeque<T> {
     }
 
     public T get(int index) {
-        if (this.isEmpty()) {
-            return null;
-        }
+        assert !this.isEmpty();
+        assert index < size;
+
         DataNode ptr = first.next;
         while (index != 0) {
             ptr = ptr.next;
@@ -126,6 +129,9 @@ public class LinkedListDeque<T> {
     }
 
     public T getRecursive(int index) {
+        assert !this.isEmpty();
+        assert index < size;
+
         return getRecursiveHelper(index, first.next);
     }
 }
