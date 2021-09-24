@@ -47,7 +47,9 @@ public class ArrayDeque<T> {
 
         // shrink the space of array to reduce the memory cost
         if (size - 1 < itemArray.length / 4) {
-            resize(itemArray.length / 2);
+            T[] newArray = (T []) new Object[itemArray.length / 2];
+            System.arraycopy(itemArray, 1, newArray, 0, size);
+            itemArray = newArray;
             size -= 1;
             return result;
         }
