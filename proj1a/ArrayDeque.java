@@ -17,7 +17,7 @@ public class ArrayDeque<T> {
 
     public void addFirst(T item) {
         if (size >= itemArray.length) {
-            T[] newArray = (T []) new Object[size * 3];
+            T[] newArray = (T []) new Object[size * 2];
             System.arraycopy(itemArray, 0, newArray, 1, size);
             newArray[0] = item;
             itemArray = newArray;
@@ -31,7 +31,7 @@ public class ArrayDeque<T> {
 
     public void addLast(T item) {
         if (size >= itemArray.length) {
-            resize(itemArray.length * 3);
+            resize(itemArray.length * 2);
         }
         itemArray[size] = item;
         size += 1;
