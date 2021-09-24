@@ -1,7 +1,7 @@
 
 public class LinkedListDeque<T> {
 
-    public class DataNode {
+    private class DataNode {
         private T data;
         private DataNode next;
         private DataNode prev;
@@ -36,7 +36,7 @@ public class LinkedListDeque<T> {
         last = first;
     }
 
-    public LinkedListDeque(LinkedListDeque<T> other) {
+    public LinkedListDeque(LinkedListDeque other) {
         if (other == null) {
             return;
         }
@@ -46,7 +46,7 @@ public class LinkedListDeque<T> {
         first.prev = first;
         last = first;
         for (int i = 0; i < other.size(); i++) {
-            addLast(other.get(i));
+            addLast((T) other.get(i));
             size += 1;
         }
     }

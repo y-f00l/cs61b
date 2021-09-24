@@ -10,7 +10,7 @@ public class ArrayDeque<T> {
     }
 
     public void addFirst(T item) {
-        if(size >= itemArray.length) {
+        if (size >= itemArray.length) {
             T[] newArray = (T []) new Object[size * 2];
             System.arraycopy(itemArray, 0, newArray, 0, size);
             itemArray = newArray;
@@ -21,7 +21,7 @@ public class ArrayDeque<T> {
     }
 
     public void addLast(T item) {
-        if(size >= itemArray.length) {
+        if (size >= itemArray.length) {
             T[] newArray = (T []) new Object[size * 2];
             System.arraycopy(itemArray, 0, newArray, 0, size);
             itemArray = newArray;
@@ -31,7 +31,9 @@ public class ArrayDeque<T> {
     }
 
     public T removeFirst() {
-        assert !this.isEmpty();
+        if (this.isEmpty()) {
+            return null;
+        }
 
         T result = itemArray[0];
         System.arraycopy(itemArray, 1, itemArray, 0, size - 1);
@@ -40,7 +42,9 @@ public class ArrayDeque<T> {
     }
 
     public T removeLast() {
-        assert !this.isEmpty();
+        if (this.isEmpty()) {
+            return null;
+        }
 
         T result = itemArray[size - 1];
         size -= 1;
