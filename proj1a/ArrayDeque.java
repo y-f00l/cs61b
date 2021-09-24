@@ -9,9 +9,15 @@ public class ArrayDeque<T> {
         itemArray = (T []) new Object[8];
     }
 
+    private void resize(int capacity) {
+        T[] newArray = (T []) new Object[capacity];
+        System.arraycopy(itemArray, 0, newArray, 0, size);
+        itemArray = newArray;
+    }
+
     public void addFirst(T item) {
-        if (size > itemArray.length) {
-            T[] newArray = (T []) new Object[size * 2];
+        if (size >= itemArray.length) {
+            T[] newArray = (T []) new Object[size * 3];
             System.arraycopy(itemArray, 0, newArray, 1, size);
             newArray[0] = item;
             itemArray = newArray;
@@ -24,10 +30,8 @@ public class ArrayDeque<T> {
     }
 
     public void addLast(T item) {
-        if (size > itemArray.length) {
-            T[] newArray = (T []) new Object[size * 2];
-            System.arraycopy(itemArray, 0, newArray, 0, size);
-            itemArray = newArray;
+        if (size >= itemArray.length) {
+            resize(itemArray.length * 3);
         }
         itemArray[size] = item;
         size += 1;
@@ -43,9 +47,7 @@ public class ArrayDeque<T> {
 
         // shrink the space of array to reduce the memory cost
         if (size - 1 < itemArray.length / 4) {
-            T[] newArray = (T []) new Object[itemArray.length / 2];
-            System.arraycopy(itemArray, 1, newArray, 0, size);
-            itemArray = newArray;
+            resize(itemArray.length / 2);
             size -= 1;
             return result;
         }
@@ -61,10 +63,8 @@ public class ArrayDeque<T> {
         }
 
         T result = itemArray[size - 1];
-        if(size - 1 < itemArray.length / 4) {
-            T[] newArray = (T []) new Object[itemArray.length / 2];
-            System.arraycopy(itemArray, 0, newArray, 0, size - 1);
-            itemArray = newArray;
+        if (size - 1 < itemArray.length / 4) {
+            resize(itemArray.length / 2);
             size -= 1;
             return result;
         }
