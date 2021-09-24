@@ -1,9 +1,8 @@
-import java.util.Arrays;
 
-public class ArrayDeque<T>{
+public class ArrayDeque<T> {
 
-    public T[] itemArray;
-    public int size;
+    private T[] itemArray;
+    private int size;
 
     public ArrayDeque() {
         size = 0;
@@ -11,7 +10,7 @@ public class ArrayDeque<T>{
     }
 
     public void addFirst(T item) {
-        if(size > itemArray.length){
+        if(size >= itemArray.length) {
             T[] newArray = (T []) new Object[size * 2];
             System.arraycopy(itemArray, 0, newArray, 0, size);
             itemArray = newArray;
@@ -22,7 +21,7 @@ public class ArrayDeque<T>{
     }
 
     public void addLast(T item) {
-        if(size > itemArray.length){
+        if(size >= itemArray.length) {
             T[] newArray = (T []) new Object[size * 2];
             System.arraycopy(itemArray, 0, newArray, 0, size);
             itemArray = newArray;
@@ -31,7 +30,7 @@ public class ArrayDeque<T>{
         size += 1;
     }
 
-    public T removeFirst(){
+    public T removeFirst() {
         assert !this.isEmpty();
 
         T result = itemArray[0];
@@ -40,7 +39,7 @@ public class ArrayDeque<T>{
         return result;
     }
 
-    public T removeLast(){
+    public T removeLast() {
         assert !this.isEmpty();
 
         T result = itemArray[size - 1];
@@ -57,7 +56,13 @@ public class ArrayDeque<T>{
     }
 
     public T get(int index) {
-        assert index < size;
+        assert index < itemArray.length;
         return itemArray[index];
+    }
+
+    public void printDeque() {
+        for (int i = 0; i < size; i++) {
+            System.out.print(itemArray[i] + " ");
+        }
     }
 }

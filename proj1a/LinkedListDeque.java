@@ -1,11 +1,10 @@
-import javax.xml.crypto.Data;
 
 public class LinkedListDeque<T> {
 
     public class DataNode {
-        public T data;
-        public DataNode next;
-        public DataNode prev;
+        private T data;
+        private DataNode next;
+        private DataNode prev;
 
         public DataNode() {
             this.next = null;
@@ -38,14 +37,15 @@ public class LinkedListDeque<T> {
     }
 
     public LinkedListDeque(LinkedListDeque<T> other) {
-        if (other == null)
+        if (other == null) {
             return;
+        }
         size = 0;
         first = new DataNode();
         first.next = first;
         first.prev = first;
         last = first;
-        for(int i = 0; i < other.size(); i++) {
+        for (int i = 0; i < other.size(); i++) {
             addLast(other.get(i));
             size += 1;
         }
@@ -93,7 +93,7 @@ public class LinkedListDeque<T> {
         first.next = first.next.next;
         first.next.prev = first;
         size -= 1;
-        if(this.isEmpty()){
+        if (this.isEmpty()) {
             last = first;
         }
         return val;
@@ -123,8 +123,9 @@ public class LinkedListDeque<T> {
     }
 
     private T getRecursiveHelper(int index, DataNode ptr) {
-        if (index == 0)
+        if (index == 0) {
             return ptr.data;
+        }
         return getRecursiveHelper(index - 1, ptr.next);
     }
 
