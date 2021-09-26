@@ -1,4 +1,3 @@
-import java.util.Calendar;
 
 public class Palindrome {
     public Deque<Character> wordToDeque(String word) {
@@ -7,7 +6,7 @@ public class Palindrome {
             return null;
         }
         Deque<Character> result = new LinkedListDeque<Character>();
-        for (int i = 0; i < word.length(); i++){
+        for (int i = 0; i < word.length(); i++) {
             result.addLast(word.charAt(i));
         }
 
@@ -23,7 +22,7 @@ public class Palindrome {
             return true;
         }
 
-        while (words.size() > 1){
+        while (words.size() > 1) {
             Character first, last;
             first = words.removeFirst();
             last = words.removeLast();
