@@ -37,7 +37,7 @@ public class Palindrome {
     public boolean isPalindrome(String word, CharacterComparator cc) {
         int size = word.length();
         for (int i = 0; i < size / 2; i++) {
-            if(!cc.equalChars(word.charAt(i), word.charAt(size - 1 - i))) {
+            if (!cc.equalChars(word.charAt(i), word.charAt(size - 1 - i))) {
                 return false;
             }
         }

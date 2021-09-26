@@ -18,9 +18,14 @@ public class TestPalindrome {
 
     @Test
     public void testIsPalindrome() {
+        OffByOne obo = new OffByOne();
         assertTrue(palindrome.isPalindrome("noon"));
         assertFalse(palindrome.isPalindrome("abc"));
         assertTrue(palindrome.isPalindrome("a"));
         assertTrue(palindrome.isPalindrome(""));
+        assertTrue(palindrome.isPalindrome("flake", obo));
+        assertFalse(palindrome.isPalindrome("abcde", obo));
+        assertFalse(palindrome.isPalindrome("a",obo));
+        assertFalse(palindrome.isPalindrome("", obo));
     }
 }
